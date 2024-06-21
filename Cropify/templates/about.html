@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="heading">
+            <h1>About Us</h1>
+        </div>
+    </header>
+    <section>
+        <p>We are a passionate team of five students from VIT Bhopal, united by our shared love for technology and agriculture. Our project, Cropify, is more than just a prediction tool; it's a commitment to revolutionize the way we approach agriculture in India.</p>
+    </section>
+    <section> <p>Special thanks to our supervisor <strong>Dr. Jitendra Mathur</strong> whose guidance and expertise were indispensable in making this project a reality."</p></section>
+    <section>
+        <h2>Meet Our Team:</h2>
+        <ul>
+            <li><strong>Front-end Developer:</strong> <span style="color: darkgreen; font-weight: 900 
+            ;">Mohit</span> created the Front-end of the cropify website, crafting a seamless and engaging user interface that enhances the Cropify experience.</li>
+            <li><strong>Machine Learning Model Trainer:</strong> <span style="color: darkgreen; font-weight: 900 
+                ;">Arpit</span>  dedicated his expertise to training the machine learning model, fine-tuning its algorithms to deliver precise and reliable crop yield predictions.</li>
+            <li><strong>Website Designer:</strong> <span style="color: darkgreen; font-weight: 900 
+                ;">ArjunBir</span>  creative prowess shone through in his design of Cropify's website, blending aesthetics with functionality to create an immersive user experience.</li>
+            <li><strong>Project Report Researcher:</strong> <span style="color: darkgreen; font-weight: 900 
+                ;">Neha</span>  meticulously researched and analyzed data for the project report, providing comprehensive insights and recommendations.</li>
+            <li><strong>Resource Acquisition Specialist:</strong> <span style="color: darkgreen; font-weight: 900 
+                ;">Mansi </span> played a pivotal role in acquiring and managing resources, ensuring the project had the necessary support for its successful implementation.</li>
+        </ul>
+    </section>
+    <section>
+        <p><strong>Cropify:</strong> Empowering Indian Agriculture</p>
+        <p>Cropify is our humble attempt to empower farmers across India with the tools they need to thrive. By predicting crop yields with accuracy, we aim to help farmers make informed decisions, optimize their resources, and increase their productivity. Together, we believe we can create a brighter future for Indian agriculture.</p>
+        <p>Cropify leverages a Decision Tree Regressor model with an impressive 95% accuracy rate to predict crop yields. By analyzing key factors such as state, district, year, crop type, and area, this model provides farmers with reliable predictions. With its ability to handle various types of data and capture complex relationships, the Decision Tree Regressor in Cropify is a valuable tool for farmers seeking to optimize their crop planning and increase productivity.</p>
+    </section>
+    <section id="contact-section">
+        <button id="contact-button" class="contact-button">Contact Us</button>
+        <div id="contact-details" class="contact-details">
+            <p>Email: mohittshukla1@gmail.com</p>
+            
+        </div>
+    </section>
+</div>
+<script>
+    document.getElementById("contact-button").addEventListener("click", function() {
+        var contactDetails = document.getElementById("contact-details");
+        contactDetails.classList.toggle("show");
+    });
+    </script>
+</div>
+</body>
+</html>
+

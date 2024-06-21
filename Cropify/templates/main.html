@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crop Yield Predictor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styles for the pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px; /* Adjust max-width as needed */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your website content goes here -->
+
+    <!-- Pop-up HTML structure -->
+    <div id="instructionPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Instructions:</h2>
+            <p>Fill in the following details to get the prediction of the crop yield:</p>
+            <ul>
+                <li>State Name</li>
+                <li>District Name</li>
+                <li>Year</li>
+                <li>Crop Name</li>
+                <li>Area</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript code for the pop-up -->
+    <script>
+        function displayPopup() {
+            document.getElementById('instructionPopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('instructionPopup').style.display = 'none';
+        }
+
+        window.onload = function() {
+            if (!sessionStorage.getItem('instructionPopupDisplayed')) {
+                displayPopup();
+                sessionStorage.setItem('instructionPopupDisplayed', true);
+            }
+        };
+    </script>
+
+
+
+<div class="container">
+    <header>
+        <div class = "heading">
+        
+      
+      <h1>Cropify</h1>
+        </div>
+    </header>
+    <section>
+        <h2>Enter Details</h2>
+        <form action="/predict" method="POST">
+            <label for="State_Name">State_Name:</label>
+            
+<select id="State_Name" name="State_Name">
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Lakshadweep">Lakshadweep</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Puducherry">Puducherry</option>
+    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+    <option value="Ladakh">Ladakh</option>
+</select>
+
+            
+       
+            
+            <label for="District_Name">District_Name(IN CAPS) </label>
+            <input type="text" id="District_Name" name="District_Name" placeholder="Enter the District_Name(in Caps)...">
+            <label for="Year">Year</label>
+            <input type="text" id="Year" name="Year" placeholder="Enter the Year..">
+            <label for="Crop">Crop Name</label>
+            <input type="text" id="Crop" name="Crop" placeholder="Enter crop name....">
+
+            <label for="Area">Area(in Acre)</label>
+            <input type="text" id="Area" name="Area" placeholder="Enter The Area...">
+            
+            <button type="submit" class = "predict">Predict</button>
+        </form>
+        
+      {% if prediction %}
+      <h1 class="text-center"> Predicted Yield (Yield is in KG/Acre): <br>{{ prediction }}</h1>
+
+      {% endif %}
+    </section>
+    <section id="about-section">
+        <div class="about-link">
+            <h2>About Us</h2>
+            <p>Learn more about the creators of Cropify and our mission.</p>
+            <a href="/about" class="btn">Read More</a>
+        </div>
+    </section>
+</div>
+</body>
+</html>
